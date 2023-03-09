@@ -1,5 +1,6 @@
 package symbyte.theweatherbackchannel.http
 
+import cats.data.EitherT
 import cats.effect.Sync
 import cats.syntax.flatMap._
 import symbyte.theweatherbackchannel.domain.services.WeatherService
@@ -17,7 +18,11 @@ object Routes {
     import ForecastCodec._
     HttpRoutes.of[F] {
       case GET -> Root / "forecast" / "today" / LatLongVar(latLong) =>
-        weatherService.todaysForcast(latLong).flatMap(Ok(_))
+        EitherT(weatherService.todaysForcast(latLong))
+          .map(Ok(_))
+          .leftMap(f => InternalServerError(f.msg))
+          .merge
+          .flatten
     }
   }
 }
