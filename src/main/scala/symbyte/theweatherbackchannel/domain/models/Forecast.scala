@@ -7,8 +7,7 @@ sealed trait TempFeels extends EnumEntry.Lowercase
 object TempFeels extends Enum[TempFeels] with CirceEnum[TempFeels] {
   val values = findValues
   case object Hot extends TempFeels
-  case object Warm extends TempFeels
-  case object Cool extends TempFeels
+  case object Moderate extends TempFeels
   case object Cold extends TempFeels
 
   // doing a simpler pure integer conversion here, no need to be
@@ -23,9 +22,8 @@ object TempFeels extends Enum[TempFeels] with CirceEnum[TempFeels] {
     }
 
     tempInFahrenheit map {
-      case t if t > 89 => TempFeels.Hot
-      case t if t > 68 => TempFeels.Warm
-      case t if t > 40 => TempFeels.Cool
+      case t if t > 85 => TempFeels.Hot
+      case t if t > 55 => TempFeels.Moderate
       case _           => TempFeels.Cold
     }
   }

@@ -73,7 +73,7 @@ class ForecastSpec extends CatsEffectSuite {
     assertIO(
       happyRoutes(happyRequest)
         .flatMap(_.as[String]),
-      """{"conditions":"Sunny","temperature":"warm"}"""
+      """{"conditions":"Sunny","temperature":"moderate"}"""
     )
   }
 
