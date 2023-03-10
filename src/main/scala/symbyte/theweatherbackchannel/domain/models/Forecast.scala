@@ -23,8 +23,8 @@ object TempFeels extends Enum[TempFeels] with CirceEnum[TempFeels] {
     }
 
     tempInFahrenheit map {
-      case t if t > 90 => TempFeels.Hot
-      case t if t > 70 => TempFeels.Warm
+      case t if t > 89 => TempFeels.Hot
+      case t if t > 68 => TempFeels.Warm
       case t if t > 40 => TempFeels.Cool
       case _           => TempFeels.Cold
     }
