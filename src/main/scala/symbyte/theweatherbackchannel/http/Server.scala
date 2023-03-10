@@ -7,7 +7,7 @@ import symbyte.theweatherbackchannel.domain.services.WeatherService
 import org.http4s.ember.server.EmberServerBuilder
 import org.http4s.server.middleware.Logger
 import symbyte.theweatherbackchannel.domain.services.NWSBackedWeatherService
-import symbyte.theweatherbackchannel.http.clients.NWSClientImpl
+import symbyte.theweatherbackchannel.http.clients.nws.NWSClientImpl
 
 object Server {
   def run[F[_]: Async]: F[Nothing] = {
