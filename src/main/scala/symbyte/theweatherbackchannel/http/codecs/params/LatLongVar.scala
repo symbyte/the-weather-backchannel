@@ -7,7 +7,8 @@ object LatLongVar {
   def unapply(str: String): Option[LatLong] = {
     if (!str.isEmpty())
       Try {
-        val lat :: long :: Nil = str.split(",").map(_.toFloat).toList
+        val lat :: long :: Nil =
+          str.split(",").map(_.toFloat).toList: @unchecked
         LatLong(lat, long)
       }.toOption
     else
